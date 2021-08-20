@@ -1,6 +1,8 @@
 import React from "react"
 import Landing from "./Reuseable/Landing"
 import profileImage from "../assets/Profile.png"
+import { ProjectsPreview } from "./Projects"
+import Contact from "./Contact"
 
 export default function Home(props) {
     return (
@@ -9,9 +11,9 @@ export default function Home(props) {
 
             <AboutMe
             name="Jordan Christensen"
-            title="iOS Developer"
+            title="iOS (& Aspiring Web) Developer"
             image={ profileImage }
-            aboutMeText="I have cheese to thank for my career in software development."
+            aboutMeText="My name is Jordan, I build websites & iOS applications. I currently live in Utah but have lived around the world. I love dogs, playing ukulele, and am a huge advocate of open-source software."
             socialMedia={
                 [
                     {
@@ -29,6 +31,12 @@ export default function Home(props) {
                 ]
             }
             />
+
+            <ProjectsPreview />
+
+            {/* <Timeline /> */}
+
+            <Contact />
         </div>
     )
 }
@@ -55,24 +63,46 @@ function AboutMe(props) {
 
     return (
         <div id="about" className="panel" data-color="extra-light">
-            <img src={ image } alt={ name } id="profile-image" />
+            <h2 className="section-heading">About me</h2>
+            <div id="about-content">
+                <img src={ image } alt={ name } id="profile-image" />
 
-            <div id="about-details">
-                <div id="about-heading">
-                    <h2 id="about-name">{ name }</h2>
-                    <p id="about-title">{ title }</p>
-                </div>
+                <div id="about-details">
+                    <div id="about-heading">
+                        <h2 id="about-name">{ name }</h2>
+                        <p id="about-title">{ title }</p>
+                    </div>
 
-                <p id="about-paragraph">{ aboutMeText }</p>
+                    <p id="about-paragraph">{ aboutMeText }</p>
 
-                <div id="social-media">
-                    <p id="social-details">Want to chat?</p>
+                    <div id="social-media">
+                        <p id="social-details">Want to chat?</p>
 
-                    <ul id="media-items">
-                        { socialMedia.map(MediaItem) }
-                    </ul>
+                        <ul id="media-items">
+                            { socialMedia.map(MediaItem) }
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     )
 }
+
+// function Timeline(props) {
+//     const TimelineItem = props => {
+        
+//         return (
+//             <div className={ "timeline-item " + props.isEven ? "even" : "odd" }>
+
+//             </div>
+//         )
+//     }
+
+//     return (
+//         <div className="panel" id="timeline">
+//             { 
+//                 props.items.map((item, index) => <TimelineItem isEven={ index % 2 == 0 } start={  } />)
+//             }
+//         </div>
+//     )
+// }

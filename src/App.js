@@ -7,6 +7,9 @@ import Home from "./Components/Home"
 import Projects from "./Components/Projects"
 import Contact from "./Components/Contact"
 
+// Global Context
+import { useThemeContext } from "./ThemeContextProvider"
+
 // Node Modules
 import React from "react"
 import {
@@ -17,6 +20,7 @@ import {
 } from "react-router-dom"
 
 export default function App() {
+  const { themeState : { StartingPanelColor, LandingTextTopColor, TitleColor, TextColor } } = useThemeContext()
   const [navIsOpen, setNavIsOpen] = React.useState(false)
 
   const tabs = [
@@ -61,6 +65,7 @@ export default function App() {
             })
           }
         </Switch>
+        <Footer />
       </div>
     </Router>
   )
@@ -86,7 +91,7 @@ function NavigationBar(props) {
                 <p className="nav-link-border unselectable">|</p>
             </li>
             <li>
-                <a href="src/Jordan Christensen Resume.pdf" className="nav-link">Resume</a>
+                <a href="./assets/Jordan Christensen Resume.pdf" className="nav-link">Resume</a>
             </li>
             <li>
                 <a href="https://github.com/mazjap/mazjap.github.io" className="nav-link">Source</a>
@@ -94,5 +99,13 @@ function NavigationBar(props) {
           </ul>
         </nav>
       </header>
+  )
+}
+
+function Footer(props) {
+  return (
+    <div>
+      
+    </div>
   )
 }

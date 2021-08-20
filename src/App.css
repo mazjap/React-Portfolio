@@ -21,12 +21,27 @@ body::-webkit-scrollbar {
 }
 
 .panel {
-  min-height: 60vh;
+  min-height: 90vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   font-family: sans-serif;
+}
+
+.section-heading {
+  font-size: 3vw;
+  margin-bottom: 3vw;
+  color: #3f3f3f;
+}
+
+/* .section-heading::after {
+
+} */
+
+.hidden {
+  opacity: 0;
 }
 
 .color-default {
@@ -57,10 +72,10 @@ body::-webkit-scrollbar {
   transform: translate(-50%, -50%);
   width: 90%;
   text-align: center;
-  z-index: 1;
 }
 
 #landing-text h1 {
+  display: inline;
   font-size: 5vw;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to top, #3f3f3f, #a1a1a1);
@@ -97,6 +112,12 @@ body::-webkit-scrollbar {
   margin: 10rem 0;
 }
 
+#about-content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 #profile-image {
   max-width: 40%;
   padding-right: 3vw;
@@ -114,14 +135,14 @@ body::-webkit-scrollbar {
 #about-name {
   text-transform: uppercase;
   font-size: 5vw;
-  opacity: .3;
+  color: #3f3f3f;
 }
 
 #about-title {
   font-size: 1.5vw;
   font-weight: 400;
-  opacity: 0.5;
   text-transform: none;
+  color: #3f3f3f;
 }
 
 #social-media {
@@ -135,6 +156,10 @@ body::-webkit-scrollbar {
   align-content: center;
   justify-content: center;
   margin-bottom: 1vh;
+}
+
+#about-name, #about-title {
+  padding-top: 10px;
 }
 
 #media-items {
