@@ -3,7 +3,7 @@ import ImageCarousel from "./Reuseable/ImageCarousel"
 
 function ProjectItem(props) {
     return (
-        <div className="project-item">
+        <div className="project-item" key={ props.name }>
             <h4>{ props.languages }</h4>
             <h4>{ props.techStack }</h4>
             <h3>{ props.name }</h3>
@@ -48,7 +48,7 @@ export default function Projects(props) {
 
     return (
         <div className="panel">
-            <h2 className="section-heading">Projects</h2>
+            <h2 className="section-heading">ls</h2>
             <div className="project-container">
                 { projects.map((project) => ProjectItem(project)) }
             </div>

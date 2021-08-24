@@ -7,7 +7,7 @@ export const getInitialThemes = () => {
         light: {
             StartingPanelColor: "#ececec",
             LandingTextTopColor: "#a1a1a1",
-            TitleColor: "#3f3f3f",
+            TitleColor: "#666666",
             TextColor: "#000000"
         },
         dark: {
@@ -38,15 +38,16 @@ const ThemeContextProvider = ({ children }) => {
         document.body.style.backgroundColor = color;
     }
 
-    setBodyBackground(themes[themeKey].BottomGradientColor)
+    setBodyBackground(themes[themeKey].StartingPanelColor)
 
     return (
         <ThemeContext.Provider value={{
             themeState: themes[themeKey],
             theme: themeKey,
-            setTheme: (event) => {
-                const {target: {value} } = event
-                console.log(value, event)
+            setTheme: value => {},
+            setThemeFromEvent: event => {
+                const { target: { value } } = event
+
                 if (themes[value]) {
                     localStorage.setItem("theme", value)
                     setTheme(value)
@@ -54,13 +55,23 @@ const ThemeContextProvider = ({ children }) => {
                 }
             },
             updateTheme: (event) => {
-                const {name, value} = event.target
+                const { name, value } = event.target
                 const newThemes = { ...themes }
                 newThemes[themeKey][name] = value
                 
                 localStorage.setItem("currentThemes", JSON.stringify(newThemes))
                 setThemes(getInitialThemes())
                 setBodyBackground(newThemes.BottomGradientColor)
+            },
+            toggleTheme: () => {
+                switch (themeKey) {
+                case "light":
+                    setTheme("dark")
+                    break
+                default:
+                    setTheme("light")
+                    break
+                }
             }
         }}>
             {children}

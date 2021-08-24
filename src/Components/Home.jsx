@@ -3,8 +3,11 @@ import Landing from "./Reuseable/Landing"
 import profileImage from "../assets/Profile.png"
 import { ProjectsPreview } from "./Projects"
 import Contact from "./Contact"
+import { useThemeContext } from "../ThemeContextProvider"
 
 export default function Home(props) {
+    // const { themeState: { StartingPanelColor, TitleColor, TextColor } } = useThemeContext()
+
     return (
         <div>
             <Landing landingText='print("Hello, World!")' />
@@ -30,6 +33,8 @@ export default function Home(props) {
                     }
                 ]
             }
+            // titleColor={ TitleColor }
+            // textColor={ TextColor }
             />
 
             <ProjectsPreview />
@@ -42,7 +47,7 @@ export default function Home(props) {
 }
 
 function AboutMe(props) {
-    const { name, image, title, aboutMeText, socialMedia } = props
+    const { name, image, title, aboutMeText, socialMedia, titleColor, textColor } = props
 
     const MediaItem = (props) => {
         const { href, icon } = props
@@ -63,7 +68,7 @@ function AboutMe(props) {
 
     return (
         <div id="about" className="panel" data-color="extra-light">
-            <h2 className="section-heading">About me</h2>
+            <h2 className="section-heading">whoami</h2>
             <div id="about-content">
                 <img src={ image } alt={ name } id="profile-image" />
 
