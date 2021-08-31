@@ -4,13 +4,38 @@ import profileImage from "../assets/Profile.png"
 import { ProjectsPreview } from "./Projects"
 import Contact from "./Contact"
 import { useThemeContext } from "../ThemeContextProvider"
+import Switch from "./Reuseable/Switch"
+import useInterval from "./useInterval"
 
 export default function Home(props) {
-    // const { themeState: { StartingPanelColor, TitleColor, TextColor } } = useThemeContext()
+    const textFor = bool => {
+        return bool 
+        ? "console.log('Hello, World!')"
+        : 'print("Hello, World!")'
+    }
 
+    const { themeState: { TitleColor, TextColor } } = useThemeContext()
+    const [ isWebSelected, setIsWebSelected ] = React.useState(false)
+    const [ landingText, setLandingText ] = useInterval(textFor(false))
+
+    const toggleWebSelected = () => {
+        const newValue = !isWebSelected
+
+        setLandingText(textFor(newValue))
+        setIsWebSelected(newValue)
+    }
     return (
         <div>
-            <Landing landingText='print("Hello, World!")' />
+            <Switch 
+            isSelected={ isWebSelected } 
+            leadingTitle="iOS"
+            trailingTitle="Web"
+            textColor={ TextColor }
+            onClick={
+                toggleWebSelected
+            } />
+
+            <Landing landingText={ landingText } />
 
             <AboutMe
             name="Jordan Christensen"
@@ -33,8 +58,8 @@ export default function Home(props) {
                     }
                 ]
             }
-            // titleColor={ TitleColor }
-            // textColor={ TextColor }
+            titleColor={ TitleColor }
+            textColor={ TextColor }
             />
 
             <ProjectsPreview />

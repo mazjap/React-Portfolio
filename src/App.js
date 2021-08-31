@@ -19,6 +19,9 @@ import {
 
 // Custom Hooks
 import useHover from "./Hooks/useHover"
+import Home from "./Components/Home"
+import Projects from "./Components/Projects"
+import Contact from "./Components/Contact"
 
 export default function App() {
   const { themeState, theme, toggleTheme } = useThemeContext()
@@ -45,15 +48,15 @@ export default function App() {
       toggleTheme={ toggleTheme }
       />
         <Switch>
-          {
-            tabs.map((item, index) => tabs[tabs.length - 1 - index]).map(({ link, component }) => {
-              return (
-                <Route path={ link } key={ link }>
-                  { component }
-                </Route>
-              )
-            })
-          }
+          <Route path="/">
+            <Home />
+          </Route>
+          <Route path="/projects">
+            <Projects />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
         </Switch>
         <Footer />
       </div>
@@ -180,8 +183,8 @@ function NavigationBar(props) {
                 }
               }>
                 <ThemeImage 
-                fillColor={ backgroundColor } 
-                strokeColor={ textColor } 
+                fillColor={ isHoveringOverTheme ? textColor : backgroundColor } 
+                strokeColor={ isHoveringOverTheme ? backgroundColor : textColor } 
                 themeKey={ themeKey } />
               </button>
             </li>
