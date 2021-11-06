@@ -1,0 +1,36 @@
+.switch-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .switch-container > * {
+    margin: 0 5px;
+  }
+  
+  .switch {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    background-color: gray;
+  }
+  
+  .switch-spacer {
+    width: 50%;
+  }
+  
+  .switch-selection {
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background-color: white;
+    transition: transform 150ms;
+    transition-timing-function: ease-out;
+    cursor: pointer;
+  }
+  
+  .switch-selected {
+    transform: translate(20px, 0)
+  }

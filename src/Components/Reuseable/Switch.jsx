@@ -1,5 +1,7 @@
 import React from "react"
 
+import "../../CSS/Switch.css"
+
 export default function Switch(props) {
     return (
         <div className="switch-container">

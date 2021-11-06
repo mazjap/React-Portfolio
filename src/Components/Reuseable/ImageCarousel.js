@@ -1,13 +1,13 @@
 import "./ImageCarousel.css"
 import React from "react"
 
-// Props is expected to have:
-// link: string 
-// images: [string] 
-// index: int
-// altText: string
+// Props -
+// url: string?
+// images: [string]?
+// index: int?
+// altText: string?
 export default function ImageCarousel(props) {
-    const [imageIndex, setImageIndex] = React.useState(0)
+    const [imageIndex, setImageIndex] = React.useState(props.index ?? 0)
     const images = props.images ?? []
 
     const incrementImage = () => {
@@ -20,9 +20,9 @@ export default function ImageCarousel(props) {
 
     const decrementImage = () => {
         if (imageIndex - 1 < 0) {
-            setImageIndex(images.length)
-        } else {
             setImageIndex(images.length - 1)
+        } else {
+            setImageIndex(imageIndex - 1)
         }
     }
 
@@ -30,7 +30,7 @@ export default function ImageCarousel(props) {
         return (
             <div className="slideshow_item">
                 <div className="project-img">
-                    <a target="_blank" rel="noopener noreferrer" href={ props.url ?? "#" }><img src={ props.source } alt={ props.altText ?? "Image carousel" } /></a>
+                    <a target="_blank" rel="noopener noreferrer" href={ props.url ?? "#" }><img src={ props.imageSource } alt={ props.altText ?? "" } /></a>
                 </div>
             </div>
         )
@@ -38,9 +38,9 @@ export default function ImageCarousel(props) {
 
     return (
         <div className="slideshow_container">
-            { (props.images ?? []).map(url => Image({ url, source: props.source })) }
-            <button className="leftArrow" onClick={ incrementImage }>❮</button>
-            <button className="rightArrow" onClick={ decrementImage }>❯</button>
+            { (props.images ?? []).map(url => <Image redirect={ props.url } imageSource={ url } key={ url } />) }
+            <button className="leftArrow" onClick={ decrementImage }>❮</button>
+            <button className="rightArrow" onClick={ incrementImage }>❯</button>
         </div>
     )
 }

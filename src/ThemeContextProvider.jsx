@@ -5,16 +5,20 @@ export const getInitialThemes = () => {
     // If themes are already set, use those values, otherwise use default value
     return existingThemes ? JSON.parse(existingThemes) : {
         light: {
-            StartingPanelColor: "#ececec",
-            LandingTextTopColor: "#a1a1a1",
-            TitleColor: "#666666",
-            TextColor: "#000000"
+            backgroundColor: "#3565ad",
+            buttonColor: "#f4b95c",
+            buttonSecondaryColor: "#f7ce88",
+            titleColor: "#0b2042",
+            titleSecondaryColor: "#3b4b62",
+            textColor: "#0b2042"
         },
         dark: {
-            StartingPanelColor: "#3f3f3f",
-            LandingTextTopColor: "#ececec",
-            TitleColor: "#999999",
-            TextColor: "#ffffff"
+            backgroundColor: "#1f2c3d",
+            buttonColor: "#5d4a2a",
+            buttonSecondaryColor: "#715b36",
+            titleColor: "#65aacc",
+            titleSecondaryColor: "#4488aa",
+            textColor: "#99aacc"
         },
         custom: {}
     }
@@ -38,7 +42,7 @@ const ThemeContextProvider = ({ children }) => {
         document.body.style.backgroundColor = color;
     }
 
-    setBodyBackground(themes[themeKey].StartingPanelColor)
+    setBodyBackground(themes[themeKey].backgroundColor)
 
     return (
         <ThemeContext.Provider value={{

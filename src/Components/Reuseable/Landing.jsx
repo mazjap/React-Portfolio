@@ -1,8 +1,10 @@
 import React from "react"
 import { useThemeContext } from "../../ThemeContextProvider"
 
+import "../../CSS/LandingText.css"
+
 export default function Landing(props) {
-    const { themeState: { LandingTextTopColor, TitleColor, TextColor } } = useThemeContext()
+    const { themeState: { titleSecondaryColor, titleColor, textColor } } = useThemeContext()
     const { landingText } = props
     const [ isShowingScrollText, setShowingScrollText ] = React.useState(true)
     const [ isShowingIndicator, setIndicatorShowing ] = React.useState(true)
@@ -24,7 +26,7 @@ export default function Landing(props) {
     }, [isShowingIndicator])
 
     const style = {
-        backgroundImage: `linear-gradient(to top, ${TitleColor}, ${LandingTextTopColor})`,
+        backgroundImage: `linear-gradient(to top, ${titleColor}, ${titleSecondaryColor})`,
         backgroundClip: "text",
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "none",
@@ -51,7 +53,7 @@ export default function Landing(props) {
             <div id="scroll-text">
                 <p style={
                     {
-                        color: TextColor,
+                        color: textColor,
                         transition: "500ms"
                     }
                 }>{ isShowingScrollText ? "Scroll down for more" : "" }</p>
