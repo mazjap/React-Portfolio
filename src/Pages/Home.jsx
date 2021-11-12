@@ -18,8 +18,9 @@ export default function Home(props) {
     }
 
     const { themeState: { textColor } } = useThemeContext()
+    const [ ref, isOnScreen ] = useOnScreen()
     const [ isWebSelected, setIsWebSelected ] = React.useState(false)
-    const [ landingText, setLandingText ] = useIntervaledText(textFor(false))
+    const [ landingText, setLandingText ] = useIntervaledText(textFor(isWebSelected), isOnScreen ? 70 : null)
 
     const toggleWebSelected = () => {
         const newValue = !isWebSelected
@@ -39,7 +40,9 @@ export default function Home(props) {
                 }
             />
 
-            <Landing landingText={ landingText } />
+            <div ref={ ref }>
+                <Landing landingText={ landingText } />
+            </div>
 
             <AboutMe
                 name="Jordan Christensen"
@@ -89,4 +92,30 @@ export default function Home(props) {
             <Contact />
         </div>
     )
+}
+
+// Hook
+function useOnScreen(rootMargin = "0px") {
+    // State and setter for storing whether element is visible
+    const element = React.useRef()
+    const [ isIntersecting, setIntersecting ] = React.useState(false)
+
+    React.useLayoutEffect(() => {
+        const observer = new IntersectionObserver(
+        ([entry]) => {
+            // Update our state when observer callback fires
+            setIntersecting(entry.isIntersecting)
+        },
+        {
+            rootMargin
+        }
+        )
+        if (element.current) {
+            observer.observe(element.current)
+        }
+
+        return () => observer.unobserve(element.current)
+    }, []) // Empty array ensures that effect is only run on mount and unmount
+
+    return [ element, isIntersecting ]
 }

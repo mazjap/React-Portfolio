@@ -50,7 +50,7 @@ export default function App() {
         />
         <Switch>
           <Route exact path="/contact" render={ () => <Contact /> } />
-          <Route exact path="/projects/:projectId" render={ (props) => <ProjectDetail projectId={ props.match.params.projectId } /> } />
+          <Route exact path="/projects/:projectId" render={ ({ match: { params: { projectId } } }) => <ProjectDetail projectId={ projectId } /> } />
           <Route exact path="/projects" render={ () => <Projects /> } />
           <Route path="/" render={ () => <Home /> } />
         </Switch>

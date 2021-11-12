@@ -15,6 +15,17 @@ export const PROJECT_FILTER = Object.freeze({
     "name" : 5
 })
 
+// Project:
+// name: string
+// description: string
+// techStack: string
+// languages: string[]
+// github: string
+// production: string
+// type: number
+// images: string[]
+// video?: string
+
 function ProjectItem(props) {
     const { isPreview, projectId } = props
     const { themeState: { textColor, buttonColor, buttonSecondaryColor } } = useThemeContext()
@@ -36,7 +47,7 @@ function ProjectItem(props) {
             <h4 style={ textStyle }>{ props.techStack }</h4>
             <h3 style={ textStyle }>{ props.name }</h3>
             {
-                isPreview
+                isPreview || (props.images?.length ?? 0) == 0
                 ? null
                 : <ImageCarousel
                     link={ link }
@@ -81,7 +92,6 @@ export function Projects(props) {
         .then(value => {
             value.json()
             .then(json => {
-                console.log(json)
                 setProjects(json)
                 setError(null)
             })

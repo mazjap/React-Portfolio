@@ -2,7 +2,7 @@ import React from "react"
 import { useEffect, useRef } from 'react'
 
 // Ripped from https://overreacted.io/making-setinterval-declarative-with-react-hooks/
-// (My method caused memory leaks)
+// as my method caused memory leaks :(
 function useInterval(callback, delay) {
     const savedCallback = useRef()
   
@@ -16,7 +16,7 @@ function useInterval(callback, delay) {
       function tick() {
         savedCallback.current()
       }
-      if (delay !== null) {
+      if (delay) {
         let id = setInterval(tick, delay)
         return () => clearInterval(id)
       }
@@ -37,7 +37,7 @@ export default function useIntervaledText(initial, duration) {
                 setCurrentText(currentText.slice(0, -1))
             }
         }
-    }, duration ?? 70)
+    }, currentText === desiredText ? null : (duration))
 
     return [currentText, setDesiredText]
 }

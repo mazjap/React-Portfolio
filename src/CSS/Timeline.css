@@ -20,7 +20,6 @@
     transform: translate(47.5vw, 0);
     height: 100%;
     width: 0.5vw;
-    background-color: black;
     border-radius: 0.25vw;
 }
   
@@ -43,9 +42,25 @@
 }
 
 .timeline-item .date {
+    position: absolute;
+    top: 3.5vw;
+    left: 47.75vw;
+    transform: translate(-50%, 0%);
+    margin: auto;
     font-size: 10px;
     padding: 5px 3px;
-    background-color: rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.timeline-item .date::before {
+    content: '';
+    position: absolute;
+    background: hsl(0, 0%, 12%);
+    left: -6vw;
+    margin-top: -0.65vh;
+    width: 10px;
+    height: 10px;
+    padding: 10px;
     border-radius: 5px;
 }
 
@@ -53,6 +68,7 @@
     padding: 5px 10px;
     border-radius: 5px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .timeline-item .right {

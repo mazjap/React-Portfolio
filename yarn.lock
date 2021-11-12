@@ -10882,6 +10882,11 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
+use-hooks-react@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/use-hooks-react/-/use-hooks-react-1.2.2.tgz#3d02a89e71b4d7d9944e6089082b6d26fac3bbc5"
+  integrity sha512-6eBAyIrh3mUzeW55tBBarxIaz1ROOYDjldNkL/ZwMiIS+hcdKEL5ZrxcpjA2uL8isOXj8p7KwugG5vTUi5U87w==
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
